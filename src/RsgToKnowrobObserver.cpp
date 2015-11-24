@@ -38,10 +38,22 @@ RsgToKnowrobObserver::~RsgToKnowrobObserver() {
 bool RsgToKnowrobObserver::addNode(Id parentId, Id& assignedId,
 		vector<Attribute> attributes, bool forcedId) {
 	return true;
+
+	/*
+	 * Relevent for creation of semantic map. Triggered by loading of OSM data.
+	 * Potentially triggerd when a new images "snapshot" within a mission
+	 * is saved in the DCM.
+	 */
+
 }
 
 bool RsgToKnowrobObserver::addGroup(Id parentId, Id& assignedId,
 		vector<Attribute> attributes, bool forcedId) {
+
+	/*
+	 * Relevent for creation of semantoc map. Triggered by loading of OSM data.
+	 * Mostly eqivalent to addNode.
+	 */
 
 	return true;
 }
@@ -52,6 +64,12 @@ bool RsgToKnowrobObserver::addTransformNode(Id parentId, Id& assignedId,
 		TimeStamp timeStamp, bool forcedId) {
 
 	LOG(DEBUG) << "RsgToKnowrobObserver::addTransformNode.";
+
+	/*
+	 * Relevent for creation of semantoc map. Triggered by loading of OSM data.
+	 * Potentially triggerd when a new images "snapshot" within a mission
+	 * is saved in the DCM.
+	 */
 
 	return false;
 
@@ -71,6 +89,10 @@ bool RsgToKnowrobObserver::addGeometricNode(Id parentId, Id& assignedId,
 		vector<Attribute> attributes, Shape::ShapePtr shape,
 		TimeStamp timeStamp, bool forcedId) {
 
+	/*
+	 * Possibly relevent for creation of semantic map. Triggered by loading of OSM data.
+	 */
+
 	return true;
 }
 
@@ -81,11 +103,21 @@ bool RsgToKnowrobObserver::addRemoteRootNode(Id rootId, vector<Attribute> attrib
 
 bool RsgToKnowrobObserver::addConnection(Id parentId, Id& assignedId, vector<Attribute> attributes, vector<Id> sourceIds, vector<Id> targetIds, TimeStamp start, TimeStamp end, bool forcedId) {
 
+	/*
+	 * Relevent for creation of semantic map. Triggered by loading of OSM data.
+	 * This is used for osm "ways".
+	 */
+
 	return true;
 }
 
 bool RsgToKnowrobObserver::setNodeAttributes(Id id,
 		vector<Attribute> newAttributes, TimeStamp timeStamp ) {
+
+	/*
+	 * Pecepetion event w.r.t to a changed attribute
+	 * goes here...
+	 */
 
 	return true;
 }
