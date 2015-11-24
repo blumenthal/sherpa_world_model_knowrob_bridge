@@ -29,7 +29,6 @@
 #include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
 
-#include "SceneGraphTransformNodes.h"
 #include "SceneGraphTypeCasts.h"
 
 namespace brics_3d {
@@ -57,18 +56,6 @@ public:
 
 
 private:
-
-    void processTransformUpdate (std::string frameId);
-    bool tfNodeExistsInWorldModel(std::string frameId);
-    brics_3d::rsg::Id getTfNodeByFrameId(std::string frameId);
-    brics_3d::rsg::Id getParentNodeByFrameId(std::string frameId);
-
-    tf::TransformBroadcaster tfPublisher;
-
-	std::map <std::string, SceneGraphTransformNodes> sceneGraphToTfMapping;
-
-	/// Turn on/off to automatically create corresponding RSG nodes based on all so far recieved TF frames.
-	bool enableFrameAutoDiscovery;
 
 	WorldModel* wm;
 

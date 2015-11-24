@@ -28,7 +28,7 @@ namespace brics_3d {
 namespace rsg {
 
 RsgToKnowrobObserver::RsgToKnowrobObserver(WorldModel* wm) : wm(wm) {
-	enableFrameAutoDiscovery = true;
+	// init menbers here
 }
 
 RsgToKnowrobObserver::~RsgToKnowrobObserver() {
@@ -52,48 +52,6 @@ bool RsgToKnowrobObserver::addTransformNode(Id parentId, Id& assignedId,
 		TimeStamp timeStamp, bool forcedId) {
 
 	LOG(DEBUG) << "RsgToKnowrobObserver::addTransformNode.";
-
-	string tag = "ros_tf:frame_id";
-	vector<std::string> resultValues;
-	if(getValuesFromAttributeList(attributes, tag, resultValues)) {
-		string frameId = resultValues[0]; // >=1
-		LOG(DEBUG) << "RsgToKnowrobObserver: A new transform node has been added that belongs to the smantic conteixt of : " << tag;
-
-		if(sceneGraphToTfMapping.find(frameId) == sceneGraphToTfMapping.end()) {
-
-			LOG(DEBUG) << "RsgToKnowrobObserver: Frame with fram_id  " << frameId << " not yet contained in mapping list.";
-
-			/* get parent frame_id */
-			vector<Attribute> parentAttributes;
-			wm->scene.getNodeAttributes(parentId, parentAttributes);
-
-			resultValues.clear();
-			if(getValuesFromAttributeList(parentAttributes, tag, resultValues)) {
-				string parentFrameId = resultValues[0]; // >=1
-
-				LOG(DEBUG) << "RsgToKnowrobObserver: parentFrameId is :" << parentFrameId;
-
-				SceneGraphTransformNodes tmpSceneGraphTransformSpec;
-				tmpSceneGraphTransformSpec.id = assignedId;
-				tmpSceneGraphTransformSpec.name = frameId;
-				tmpSceneGraphTransformSpec.tfParent = parentFrameId;
-				sceneGraphToTfMapping.insert(std::make_pair(frameId, tmpSceneGraphTransformSpec));
-
-				/* Immediatly push out this information */
-				processTransformUpdate(frameId);
-
-				return true;
-			} else {
-				LOG(WARNING) << "RsgToKnowrobObserver: parentFrameId cannot be determined";
-			}
-
-
-
-		} else {
-			LOG(DEBUG) << "RsgToKnowrobObserver: Already conteined in mapping list.";
-		}
-
-	}
 
 	return false;
 
@@ -136,20 +94,9 @@ bool RsgToKnowrobObserver::setTransform(Id id,
 		IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform,
 		TimeStamp timeStamp) {
 
-	LOG(DEBUG) << "RsgToKnowrobObserver::setTransform.";
-
-
-	string tag = "ros_tf:frame_id";
-	vector<std::string> resultValues;
-	vector<Attribute> attributes;
-
-	wm->scene.getNodeAttributes(id, attributes);
-
-	if(getValuesFromAttributeList(attributes, tag, resultValues)) {
-		string frameId = resultValues[0]; // >=1
-		processTransformUpdate(frameId);
-		return true;
-	}
+	/*
+	 * Pecepetion event w.r.t to a changed pose goes here...
+	 */
 
 	return false;
 }
@@ -176,49 +123,6 @@ bool RsgToKnowrobObserver::removeParent(Id id, Id parentId) {
 
 	return true;
 }
-
-bool RsgToKnowrobObserver::tfNodeExistsInWorldModel(std::string frameId) {
-	return sceneGraphToTfMapping.find(frameId) != sceneGraphToTfMapping.end();
-}
-
-Id RsgToKnowrobObserver::getTfNodeByFrameId(std::string frameId) {
-	if (!tfNodeExistsInWorldModel(frameId)) {
-		LOG(WARNING) << "getTfNodeByFrameId: a node with frameId " << frameId << " does not exist.";
-		return Id(0); // Nil value
-	}
-
-	std::map <std::string, SceneGraphTransformNodes>::iterator iter = sceneGraphToTfMapping.find(frameId);
-	return iter->second.id;
-}
-
-void RsgToKnowrobObserver::processTransformUpdate (string frameId) {
-
-	/* retrieve data from mapping */
-	std::map <std::string, SceneGraphTransformNodes>::iterator it = sceneGraphToTfMapping.find(frameId);
-
-	if(it == sceneGraphToTfMapping.end()) {
-		LOG(ERROR) << "RsgToKnowrobObserver::processTransformUpdate Frame with fram_id  " << frameId << " not contained in mapping list. Skipping it.";
-	} else {
-
-		geometry_msgs::TransformStamped tmpTransformMsg;
-		brics_3d::HomogeneousMatrix44::IHomogeneousMatrix44Ptr transformUpdate(new brics_3d::HomogeneousMatrix44());
-		if(!wm->scene.getTransform(getTfNodeByFrameId(frameId), wm->now(), transformUpdate)) {
-			LOG(WARNING) << "RsgToKnowrobObserver::processTransformUpdate transform not found.";
-			return;
-		}
-		SceneGraphTypeCasts::convertTransformToRosMsg(transformUpdate, tmpTransformMsg);
-
-		/* add meta data */
-		tmpTransformMsg.header.stamp = ros::Time::now();
-		tmpTransformMsg.header.frame_id = it->second.tfParent;
-		tmpTransformMsg.child_frame_id = it->second.name;
-
-		/* push it out */
-		LOG(ERROR) << "RsgToKnowrobObserver::processTransformUpdate emitting  frame " << frameId  << std::endl << *transformUpdate;
-		tfPublisher.sendTransform(tmpTransformMsg);
-	}
-}
-
 } /* namespace rsg */
 } /* namespace brics_3d */
 
