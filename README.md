@@ -1,0 +1,1 @@
+# sherpa_world_model_knowrob_bridge
