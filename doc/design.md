@@ -8,20 +8,28 @@
 
 ### Knowrob
 
-* has *semantic map* with triples
+* Same as described [here](https://github.com/bbrieber/knowrob_rsg)
+* has *semantic map* with triples	
   * Object
   * Transform
   * Perception Event 
  
-### Knowrob Bridgre
+### Knowrob Bridge
 
+* Module can be found in **this** repository
 * Used *Observer* Software Pattern to send triples to semantic map whenever a RSG update arrives (JSON).
   * Has a configurable *filter* policy
 * Recieves Perception Events and 
-  * inserts a Perception Event into semantic map
-  * inserts a geoloclized Node to represent the Prerception Event.  
+  * Inserts a Perception Event into semantic map
+  * Inserts a geoloclized Node to represent the Prerception Event.  
+
+* TODO
+  * [ ] Add Perception Event ROS message description
+  * [ ] Add semantic map updates within observer 
+  * [ ] Add filter
+  * [ ] Add handling of Perception Event Messages
 
 ### SHERPA World model
 
 * Same as described [here](https://github.com/blumenthal/ubx_robotscenegraph) 
-* loads OSM map
+* Loads OSM map
