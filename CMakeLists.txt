@@ -20,12 +20,17 @@ MESSAGE(STATUS "INFO: used catkin_INCLUDE_DIRS: ${catkin_INCLUDE_DIRS}")
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
+OPTION(USE_OSG "Enable Open Scene Graph" OFF)    
+
+
 SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/cmake_modules") #TODO make globally available
 FIND_PACKAGE(BRICS_3D REQUIRED)
 FIND_PACKAGE(Eigen REQUIRED)
 FIND_PACKAGE(Boost COMPONENTS thread)
 #FIND_PACKAGE(OpenCV REQUIRED)
-FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgText) 
+IF(USE_OSG)
+  FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgText) 
+ENDIF(USE_OSG)  
 FIND_PACKAGE(Xerces) 
 FIND_PACKAGE(Microblx)
 ADD_DEFINITIONS(-DEIGEN3)
@@ -63,7 +68,10 @@ IF(USE_HDF5)
     ENDIF (HDF5_FOUND)
 ENDIF(USE_HDF5)
 
-OPTION(USE_OSG "Enable Open Scene Graph" OFF)    
+OPTION(HDF5_1_8_12_OR_HIGHER "Enable HDF5 Support for version 1.8.12 or higher. This is rquired due to HDF5 API changes." ON)
+IF(HDF5_1_8_12_OR_HIGHER)
+    ADD_DEFINITIONS(-DHDF_1_8_12_OR_HIGHER)  
+ENDIF(HDF5_1_8_12_OR_HIGHER)
 IF(USE_OSG)
     #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
     ADD_DEFINITIONS(-DENABLE_OSG)
@@ -172,6 +180,9 @@ add_executable(sherpa_world_model_knowrob_bridge
     src/RsgToKnowrobObserver.cpp
 )
 
+IF(USE_OSG)
+    #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
+    ADD_DEFINITIONS(-DENABLE_OSG)
 set(WORLD_MODEL_LIBRARIES
         ${BRICS_3D_LIBRARIES}      
         ${XERCES_LIBRARIES}
@@ -185,8 +196,19 @@ set(WORLD_MODEL_LIBRARIES
         ${catkin_LIBRARIES}
         ${HDF5_LIBRARIES}
         ${UBX_LIBRARY}
-	z
 )
+ELSE(USE_OSG)
+  set(WORLD_MODEL_LIBRARIES
+        ${BRICS_3D_LIBRARIES}      
+        ${XERCES_LIBRARIES}
+        ${OpenCV_LIBRARIES}
+        ${Boost_LIBRARIES}
+        ${catkin_LIBRARIES}
+        ${HDF5_LIBRARIES}
+        ${UBX_LIBRARY}
+)
+
+ENDIF(USE_OSG)  
 
 
 ## Add cmake target dependencies of the executable/library
