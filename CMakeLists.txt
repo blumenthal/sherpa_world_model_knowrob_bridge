@@ -38,6 +38,7 @@ FIND_PACKAGE(Microblx)
 ADD_DEFINITIONS(-DEIGEN3)
 
 OPTION(USE_HDF5 "Enable HDF5 Support" ON)
+OPTION(USE_HDF5_DEBUG_LIBS "If enabled, the debug libraries of HDF5 are used." OFF) 
 IF(USE_HDF5)
 
     # only newer versions of FindHDF5.cmake exctract the HDF5_ROOT from the environment variable
@@ -53,12 +54,19 @@ IF(USE_HDF5)
     FIND_PACKAGE(HDF5 REQUIRED COMPONENTS CXX HL)
     IF(USE_HDF5_NON_DEFAULT_PATH) #override results
         SET(HDF5_CXX_INCLUDE_DIR ${HDF5_ROOT}/include)        
-        SET(HDF5_LIBRARIES 
-            ${HDF5_ROOT}/lib/libhdf5_hl_debug.so
-            ${HDF5_ROOT}/lib/libhdf5_cpp_debug.so
-            ${HDF5_ROOT}/lib/libhdf5_debug.so
-            #CACHE STRING "Accumulated HDF5 libraries."   
-        )
+        IF(USE_HDF5_DEBUG_LIBS) 
+            SET(HDF5_LIBRARIES         
+                ${HDF5_ROOT}/lib/libhdf5_hl_debug.so
+                ${HDF5_ROOT}/lib/libhdf5_cpp_debug.so
+                ${HDF5_ROOT}/lib/libhdf5_debug.so  
+            )
+        ELSE(USE_HDF5_DEBUG_LIBS) 
+            SET(HDF5_LIBRARIES         
+                ${HDF5_ROOT}/lib/libhdf5_hl.so
+                ${HDF5_ROOT}/lib/libhdf5_cpp.so
+                ${HDF5_ROOT}/lib/libhdf5.so    
+            )
+        ENDIF(USE_HDF5_DEBUG_LIBS)  
     ENDIF(USE_HDF5_NON_DEFAULT_PATH)   
     MESSAGE(STATUS "INFO: used HDF5_LIBRARIES: ${HDF5_LIBRARIES}")
 
