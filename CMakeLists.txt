@@ -23,7 +23,9 @@ MESSAGE(STATUS "INFO: used catkin_INCLUDE_DIRS: ${catkin_INCLUDE_DIRS}")
 OPTION(USE_OSG "Enable Open Scene Graph" OFF)    
 
 
-SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/cmake_modules") #TODO make globally available
+#SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/sherpa_world_model_knowrob_bridge/external/cmake_modules") #TODO make globally available
+SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/external/cmake_modules") #TODO make globally available
+
 FIND_PACKAGE(BRICS_3D REQUIRED)
 FIND_PACKAGE(Eigen REQUIRED)
 FIND_PACKAGE(Boost COMPONENTS thread)
