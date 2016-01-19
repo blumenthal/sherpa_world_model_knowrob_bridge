@@ -40,6 +40,8 @@
 #include <brics_3d/worldModel/sceneGraph/SceneGraphFacade.h>
 #include <brics_3d/worldModel/sceneGraph/HDF5UpdateSerializer.h>
 #include <brics_3d/worldModel/sceneGraph/HDF5UpdateDeserializer.h>
+#include <brics_3d/worldModel/sceneGraph/JSONSerializer.h>
+#include <brics_3d/worldModel/sceneGraph/JSONDeserializer.h>
 #include <brics_3d/worldModel/sceneGraph/OutdatedDataIdAwareDeleter.h>
 #include <brics_3d/worldModel/sceneGraph/SceneGraphToUpdatesTraverser.h>
 #include <brics_3d/worldModel/sceneGraph/FrequencyAwareUpdateFilter.h>
@@ -91,12 +93,17 @@ int main(int argc, char **argv)
 	}
 
 	/* Connect input port to world model */
-	brics_3d::rsg::HDF5UpdateDeserializer* inDeserializer = new brics_3d::rsg::HDF5UpdateDeserializer(wm);
-	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream");
+//	brics_3d::rsg::HDF5UpdateDeserializer* inDeserializer = new brics_3d::rsg::HDF5UpdateDeserializer(wm);
+//	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream");
+	brics_3d::rsg::JSONDeserializer* inDeserializer = new brics_3d::rsg::JSONDeserializer(wm);
+	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream_json");
 
 	/* Attach the outout filter + port */
-	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge");
+//	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge");
+//	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
+	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge_json");
 	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
+
 	outSerializer->setStoreMessageBackupsOnFileSystem(false);
 	FrequencyAwareUpdateFilter* frequencyFilter = new FrequencyAwareUpdateFilter();
 	frequencyFilter->setMaxTransformUpdateFrequency(1/*Hz*/);

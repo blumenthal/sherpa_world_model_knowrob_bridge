@@ -82,6 +82,19 @@ OPTION(HDF5_1_8_12_OR_HIGHER "Enable HDF5 Support for version 1.8.12 or higher. 
 IF(HDF5_1_8_12_OR_HIGHER)
     ADD_DEFINITIONS(-DHDF_1_8_12_OR_HIGHER)  
 ENDIF(HDF5_1_8_12_OR_HIGHER)
+
+
+OPTION(USE_JSON "Enable JSON Support. Requires libvariant to be installed." ON)
+IF(USE_JSON)  
+    FIND_PACKAGE(LibVariant)
+    IF (LIBVARIANT_FOUND)
+      MESSAGE(STATUS "SUCCESSFUL: LIBVARIANT_FOUND found")  
+    ELSE (LIBVARIANT_FOUND)
+      MESSAGE(SEND_ERROR "WARNING: LIBVARIANT_FOUND not found.")
+    ENDIF (LIBVARIANT_FOUND)
+ENDIF(USE_JSON)
+
+
 IF(USE_OSG)
     #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
     ADD_DEFINITIONS(-DENABLE_OSG)
@@ -205,6 +218,7 @@ set(WORLD_MODEL_LIBRARIES
         ${Boost_LIBRARIES}
         ${catkin_LIBRARIES}
         ${HDF5_LIBRARIES}
+        ${LIBVARIANT_LIBRARIES}
         ${UBX_LIBRARY}
 )
 ELSE(USE_OSG)
@@ -215,6 +229,7 @@ ELSE(USE_OSG)
         ${Boost_LIBRARIES}
         ${catkin_LIBRARIES}
         ${HDF5_LIBRARIES}
+        ${LIBVARIANT_LIBRARIES}
         ${UBX_LIBRARY}
 )
 
