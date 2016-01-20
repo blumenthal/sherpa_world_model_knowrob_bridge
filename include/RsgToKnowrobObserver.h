@@ -31,6 +31,9 @@
 
 #include "SceneGraphTypeCasts.h"
 
+
+#include "KnowrobConnection.h"
+
 namespace brics_3d {
 namespace rsg {
 
@@ -39,6 +42,8 @@ public:
 	RsgToKnowrobObserver(WorldModel* wm);
 	virtual ~RsgToKnowrobObserver();
 
+	
+	void setKnowrobConnection(KnowrobConnection* kb);
 	/* implemetntations of observer interface */
 	bool addNode(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
 	bool addGroup(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
@@ -56,7 +61,7 @@ public:
 
 
 private:
-
+	KnowrobConnection* kb_con;
 	WorldModel* wm;
 
 };

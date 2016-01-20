@@ -17,35 +17,16 @@
  *
  ******************************************************************************/
 
-#ifndef __IAI_RSG_KNOWROB_CONNECTION__
-#define __IAI_RSG_KNOWROB_CONNECTION__
 
+#ifndef __IAI_ISHERPA_EVENT_OBSERVER__
+#define __IAI_ISHERPA_EVENT_OBSERVER__
 
+#include "sherpa_world_model_knowrob_bridge_msgs/SherpaEvent.h"
 
-#include <string>
-#include <iostream>
- 
-#include <ros/ros.h>
-#include <json_prolog/prolog.h>
- 
- 
-#include "ISherpaEventObserver.h"
-
-using namespace std;
-using namespace json_prolog;
-
-class KnowrobConnection :  public ISherpaEventObserver{
-  
-  public:
-    void onSherpaEvent(const sherpa_world_model_knowrob_bridge_msgs::SherpaEvent::ConstPtr& msg);
-    int init(void);
-    void call_nothin();
-    
-private:
-  Prolog pl;
-  
+class ISherpaEventObserver {
+  public: virtual void onSherpaEvent(const sherpa_world_model_knowrob_bridge_msgs::SherpaEvent::ConstPtr& msg) = 0;
 };
   
   
 
-#endif//__IAI_RSG_KNOWROB_CONNECTION__
+#endif//___IAI_ISHERPA_EVENT_OBSERVER__

@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_ros
   tf2_kdl 
   json_prolog
+  sherpa_world_model_knowrob_bridge_msgs
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -204,7 +205,7 @@ add_executable(sherpa_world_model_knowrob_bridge
     src/RsgToKnowrobObserver.cpp
     src/KnowrobConnection.cpp
 )
-
+add_dependencies(sherpa_world_model_knowrob_bridge sherpa_world_model_knowrob_bridge_msgs_generate_messages_cpp)
 IF(USE_OSG)
     #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
     ADD_DEFINITIONS(-DENABLE_OSG)

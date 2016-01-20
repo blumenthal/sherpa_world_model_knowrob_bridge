@@ -155,6 +155,12 @@ bool RsgToKnowrobObserver::removeParent(Id id, Id parentId) {
 
 	return true;
 }
+void RsgToKnowrobObserver::setKnowrobConnection(KnowrobConnection* kb)
+{
+
+	kb_con = kb;//
+}
+
 } /* namespace rsg */
 } /* namespace brics_3d */
 

@@ -55,14 +55,27 @@
 #include "RsgToKnowrobObserver.h"
 #include "KnowrobConnection.h"
 
+#include <vector>
+#include "ISherpaEventObserver.h"
+
 
 /* Optional visialization via OSG. This has to be enabled via a CMake option */
 #ifdef ENABLE_OSG
 	#include <brics_3d/worldModel/sceneGraph/OSGVisualizer.h>
 #endif
 
+#define SHERPA_EVENT_TOPIC_NAME "sherpa_event"
+
 using brics_3d::Logger;
 using namespace brics_3d::rsg;
+
+std::vector<class ISherpaEventObserver*> sherpaEventObservers;
+
+void onSherpaEvent(const sherpa_world_model_knowrob_bridge_msgs::SherpaEvent::ConstPtr& msg){
+  for(int i=0; i < sherpaEventObservers.size(); i++){
+    sherpaEventObservers[i]->onSherpaEvent(msg);
+  }
+}
 
 
 int main(int argc, char **argv)
@@ -133,6 +146,10 @@ int main(int argc, char **argv)
 	frequencyFilter->attachUpdateObserver(&rsgToKr);
 	
 	KnowrobConnection kb_con;
+	kb_con.init();
+	rsgToKr.setKnowrobConnection(&kb_con);
+	sherpaEventObservers.push_back(&kb_con);
+	ros::Subscriber sub = node.subscribe(SHERPA_EVENT_TOPIC_NAME, 1000, onSherpaEvent);
 	kb_con.call_nothin();
 //#endif
 	LOG(INFO) << "Ready.";
