@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_bullet 
   tf2_ros
   tf2_kdl 
+  json_prolog
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -201,6 +202,7 @@ add_executable(sherpa_world_model_knowrob_bridge
     src/world_model_knowrob_bridge.cpp 
     src/RsgRosBridge.cpp
     src/RsgToKnowrobObserver.cpp
+    src/KnowrobConnection.cpp
 )
 
 IF(USE_OSG)
@@ -242,7 +244,7 @@ ENDIF(USE_OSG)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(sherpa_world_model_knowrob_bridge
-        ${WORLD_MODEL_LIBRARIES}      
+        ${WORLD_MODEL_LIBRARIES}     
  )
 
 

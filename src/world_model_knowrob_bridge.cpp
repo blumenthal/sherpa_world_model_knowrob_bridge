@@ -53,6 +53,8 @@
 
 /* RSG <-> Knowrob bindings */
 #include "RsgToKnowrobObserver.h"
+#include "KnowrobConnection.h"
+
 
 /* Optional visialization via OSG. This has to be enabled via a CMake option */
 #ifdef ENABLE_OSG
@@ -122,13 +124,17 @@ int main(int argc, char **argv)
 	wm->scene.advertiseRootNode(); 				// required by visualizer
 #endif
 
+//#ifdef ENABLE_KNOWROB
 	/* Model to model transform of RSG udates to
 	 * assertions(?) for the semantic map reperesentaion as used within Knowrob */
 	RsgToKnowrobObserver rsgToKr(wm);
 	//wm->scene.attachUpdateObserver(&rsgToKr); // unfiltered version
 	/* Application specific fileter for the SHERPA scenaio: (TDB) */
 	frequencyFilter->attachUpdateObserver(&rsgToKr);
-
+	
+	KnowrobConnection kb_con;
+	kb_con.call_nothin();
+//#endif
 	LOG(INFO) << "Ready.";
 
 	/* Let the node loop and process messages. */

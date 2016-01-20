@@ -20,11 +20,13 @@
 #ifndef RSGROSBRIDGE_H_
 #define RSGROSBRIDGE_H_
 
+
 /* ROS includes */
 #include <ros/ros.h>
 #include <std_msgs/ByteMultiArray.h>
 
 /* BRICS_3D includes */
+
 #include <brics_3d/core/Logger.h>
 #include <brics_3d/worldModel/sceneGraph/HDF5UpdateSerializer.h>
 #include <brics_3d/worldModel/sceneGraph/HDF5UpdateDeserializer.h>
