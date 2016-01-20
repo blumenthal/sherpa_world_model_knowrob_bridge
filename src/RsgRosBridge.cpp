@@ -39,7 +39,7 @@ void RsgRosOutputBridge::initialize() {
 int RsgRosOutputBridge::write(const char* dataBuffer, int dataLength,
 		int& transferredBytes) {
 
-	LOG(DEBUG) << "RsgRosOutputBridge: sendin new update message with " << dataLength << " bytes.";
+	LOG(DEBUG) << "RsgRosOutputBridge: sending new update message with " << dataLength << " bytes.";
 
 	/* prepare ROS message */
 	std_msgs::ByteMultiArray msg;
@@ -60,6 +60,7 @@ int RsgRosOutputBridge::write(const char* dataBuffer, int dataLength,
 	hdf5StreamPublisher.publish(msg);
 	TimeStamp duration(timer.getElapsedTime(), Units::MilliSecond);
 	LOG(INFO) << "RsgRosOutputBridge: Publishing took " << std::setprecision(15) << duration.getSeconds() << " [s].";
+
 }
 
 } /* namespace rsg */
