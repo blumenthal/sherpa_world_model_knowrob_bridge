@@ -103,8 +103,8 @@ int main(int argc, char **argv)
 	/* Attach the outout filter + port */
 //	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge");
 //	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
-	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/json/updates_kr");
-	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
+	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/json/knowrob_updates");
+	JSONSerializer* outSerializer = new JSONSerializer(outBridge);
 
 	outSerializer->setStoreMessageBackupsOnFileSystem(false);
 	FrequencyAwareUpdateFilter* frequencyFilter = new FrequencyAwareUpdateFilter();
