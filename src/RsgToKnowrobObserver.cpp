@@ -37,14 +37,21 @@ RsgToKnowrobObserver::~RsgToKnowrobObserver() {
 
 bool RsgToKnowrobObserver::addNode(Id parentId, Id& assignedId,
 		vector<Attribute> attributes, bool forcedId) {
-	return true;
 
 	/*
 	 * Relevent for creation of semantic map. Triggered by loading of OSM data.
 	 * Potentially triggerd when a new images "snapshot" within a mission
 	 * is saved in the DCM.
 	 */
+	LOG(INFO) << "RsgToKnowrobObserver::addNode: A new node with rsg id " << assignedId << "has been added";
 
+	vector<std::string> resultValues;
+	if(getValuesFromAttributeList(attributes, "osm:node_id", resultValues)){
+		LOG(INFO) << "\t Node represents a OSM node with osm id =  " << resultValues[0];
+	}
+
+
+	return true;
 }
 
 bool RsgToKnowrobObserver::addGroup(Id parentId, Id& assignedId,
@@ -55,6 +62,8 @@ bool RsgToKnowrobObserver::addGroup(Id parentId, Id& assignedId,
 	 * Mostly eqivalent to addNode.
 	 */
 
+	LOG(DEBUG) << "RsgToKnowrobObserver::addGroup: A new node with rsg id " << assignedId << "has been added";
+
 	return true;
 }
 
@@ -63,7 +72,7 @@ bool RsgToKnowrobObserver::addTransformNode(Id parentId, Id& assignedId,
 		IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform,
 		TimeStamp timeStamp, bool forcedId) {
 
-	LOG(DEBUG) << "RsgToKnowrobObserver::addTransformNode.";
+	LOG(DEBUG) << "RsgToKnowrobObserver::addTransformNode:";
 
 	/*
 	 * Relevent for creation of semantoc map. Triggered by loading of OSM data.
@@ -107,6 +116,9 @@ bool RsgToKnowrobObserver::addConnection(Id parentId, Id& assignedId, vector<Att
 	 * Relevent for creation of semantic map. Triggered by loading of OSM data.
 	 * This is used for osm "ways".
 	 */
+
+	LOG(DEBUG) << "RsgToKnowrobObserver::addConnection:";
+
 
 	return true;
 }

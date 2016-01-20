@@ -96,26 +96,28 @@ int main(int argc, char **argv)
 
 	/* Create an empty world model */
 	brics_3d::WorldModel* wm = new brics_3d::WorldModel();
+	wm->scene.setCallObserversEvenIfErrorsOccurred(true); // We don't "mount" the SWM root node; such that nothin is stored
 	vector<Attribute> rootNodeAttributes;
 	rootNodeAttributes.push_back(Attribute("name", "rsg_kb_bridge")); // the name tag is for debugging
 	wm->scene.setNodeAttributes(wm->getRootNodeId(), rootNodeAttributes);
 
-	/* Attach additional debug output to the world model */
+	/* Attach additional debug output to the world model e.g.
+	 * rosparam set /enable_dot_visualizer true
+	 */
 	brics_3d::rsg::DotVisualizer structureVisualizer(&wm->scene);
+	structureVisualizer.setKeepHistory(false);
+	structureVisualizer.setFileName("knowrob_bridge");
+	structureVisualizer.setGenerateSvgFiles(true);
 	if (enableDotVisualizer) {
 		LOG(INFO) << "DotVisualizer is enabled.";
 		wm->scene.attachUpdateObserver(&structureVisualizer);
 	}
 
 	/* Connect input port to world model */
-//	brics_3d::rsg::HDF5UpdateDeserializer* inDeserializer = new brics_3d::rsg::HDF5UpdateDeserializer(wm);
-//	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream");
 	brics_3d::rsg::JSONDeserializer* inDeserializer = new brics_3d::rsg::JSONDeserializer(wm);
 	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/json/updates");
 
 	/* Attach the outout filter + port */
-//	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge");
-//	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
 	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/json/knowrob_updates");
 	JSONSerializer* outSerializer = new JSONSerializer(outBridge);
 
@@ -141,7 +143,7 @@ int main(int argc, char **argv)
 	/* Model to model transform of RSG udates to
 	 * assertions(?) for the semantic map reperesentaion as used within Knowrob */
 	RsgToKnowrobObserver rsgToKr(wm);
-	//wm->scene.attachUpdateObserver(&rsgToKr); // unfiltered version
+//	wm->scene.attachUpdateObserver(&rsgToKr); // unfiltered version
 	/* Application specific fileter for the SHERPA scenaio: (TDB) */
 	frequencyFilter->attachUpdateObserver(&rsgToKr);
 	
@@ -150,7 +152,7 @@ int main(int argc, char **argv)
 	rsgToKr.setKnowrobConnection(&kb_con);
 	sherpaEventObservers.push_back(&kb_con);
 	ros::Subscriber sub = node.subscribe(SHERPA_EVENT_TOPIC_NAME, 1000, onSherpaEvent);
-	kb_con.call_nothin();
+	//kb_con.call_nothin();
 //#endif
 	LOG(INFO) << "Ready.";
 
