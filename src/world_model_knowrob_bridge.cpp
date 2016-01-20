@@ -98,12 +98,12 @@ int main(int argc, char **argv)
 //	brics_3d::rsg::HDF5UpdateDeserializer* inDeserializer = new brics_3d::rsg::HDF5UpdateDeserializer(wm);
 //	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream");
 	brics_3d::rsg::JSONDeserializer* inDeserializer = new brics_3d::rsg::JSONDeserializer(wm);
-	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/update_stream_json");
+	RsgRosInputBridge* inBridge = new RsgRosInputBridge(inDeserializer, node, "world_model/json/updates");
 
 	/* Attach the outout filter + port */
 //	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge");
 //	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
-	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/update_stream_tf_bridge_json");
+	RsgRosOutputBridge* outBridge = new RsgRosOutputBridge(node, "world_model/json/updates_kr");
 	HDF5UpdateSerializer* outSerializer = new HDF5UpdateSerializer(outBridge);
 
 	outSerializer->setStoreMessageBackupsOnFileSystem(false);
