@@ -43,6 +43,26 @@ bool RsgToKnowrobObserver::addNode(Id parentId, Id& assignedId,
 	 * Potentially triggerd when a new images "snapshot" within a mission
 	 * is saved in the DCM.
 	 */
+	
+	//rsg_parent_id
+	//rsg_assigned_id
+	
+	
+	/*
+	 * 
+	 * {
+	 * "@worldmodeltype": "RSGUpdate" //
+	 * "node": 
+	 * 	{
+	 * 	"@graphtype": "Node",//"Connection"
+	 * 	"attributes": 
+	 * 		[{"key": "osm:node_id","value": 360484115}],
+	 * 	"id": "00000000-0000-0000-0000-0000157c8d13"},
+	 * 	"operation": "CREATE",
+	 * 	"parentId": "3ea6ce2c-7a8a-485b-9eb7-2cd57c8a24bf"
+	 * 	}
+	 */
+	
 	LOG(INFO) << "RsgToKnowrobObserver::addNode: A new node with rsg id " << assignedId << "has been added";
 
 	vector<std::string> resultValues;
@@ -74,6 +94,27 @@ bool RsgToKnowrobObserver::addTransformNode(Id parentId, Id& assignedId,
 
 	LOG(DEBUG) << "RsgToKnowrobObserver::addTransformNode:";
 
+	/**
+	 * {"@worldmodeltype": "RSGUpdate"
+	 * ,"node": 
+	 * 	{
+	 * 	"@graphtype": "Connection",
+	 * 	"@semanticContext": "Transform",
+	 * 	"attributes": [{"key": "osm:tf","value": "pose"}],
+	 * 	"history": [
+	 * 		{"stamp": 
+	 * 			{"@stamptype": "TimeStampUTCms",
+	 * 			"stamp": 1453384154636.7109},
+	 * 			"transform": 
+	 * 				{"matrix": [[1.0000000000000000,0.0000000000000000,0.0000000000000000,794210.91230174468],[0.0000000000000000,1.0000000000000000,0.0000000000000000,475242.69356737687],[0.0000000000000000,0.0000000000000000,1.0000000000000000,0.0000000000000000],[0.0000000000000000,0.0000000000000000,0.0000000000000000,1.0000000000000000]],
+	 * 				 "type": "HomogeneousMatrix44",
+	 * 				 "unit": "m"}}
+	 * 		],
+	 * 	"id": "317628c7-ea7f-4991-b0c3-bfaf9ad1da03"},
+	 * 	"operation": "CREATE",
+	 * 	"parentId": "e379121f-06c6-4e21-ae9d-ae78ec1986a1"}
+	*/
+	
 	/*
 	 * Relevent for creation of semantoc map. Triggered by loading of OSM data.
 	 * Potentially triggerd when a new images "snapshot" within a mission
@@ -115,6 +156,9 @@ bool RsgToKnowrobObserver::addConnection(Id parentId, Id& assignedId, vector<Att
 	/*
 	 * Relevent for creation of semantic map. Triggered by loading of OSM data.
 	 * This is used for osm "ways".
+	 * 
+	 * 
+	 *  {"@worldmodeltype": "RSGUpdate","node": {"@graphtype": "Node","attributes": [{"key": "osm:way_id","value": 4012537},{"key": "osm:highway","value": "tertiary"},{"key": "osm:junction","value": "roundabout"},{"key": "osm:maxspeed","value": 50},{"key": "osm:name","value": "Rathausallee"},{"key": "osm:source:maxspeed","value": "DE:urban"}],"id": "00000000-0000-0000-0000-0000003d39f9"},"operation": "CREATE","parentId": "e379121f-06c6-4e21-ae9d-ae78ec1986a1"}
 	 */
 
 	LOG(DEBUG) << "RsgToKnowrobObserver::addConnection:";
