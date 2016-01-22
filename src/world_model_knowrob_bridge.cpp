@@ -45,6 +45,7 @@
 #include <brics_3d/worldModel/sceneGraph/OutdatedDataIdAwareDeleter.h>
 #include <brics_3d/worldModel/sceneGraph/SceneGraphToUpdatesTraverser.h>
 #include <brics_3d/worldModel/sceneGraph/FrequencyAwareUpdateFilter.h>
+#include <brics_3d/worldModel/sceneGraph/RemoteRootNodeAutoMounter.h>
 #include <brics_3d/core/Logger.h>
 #include <brics_3d/core/HomogeneousMatrix44.h>
 
@@ -87,12 +88,14 @@ int main(int argc, char **argv)
 
 	/* parameters */
 	bool enableDotVisualizer;
+	bool enableCache;
 
 	node.param("enable_dot_visualizer", enableDotVisualizer, false);
+	node.param("enable_cache", enableCache, true); // Enables in-memory cache for bridge; allows for local lookups of initial transforms
 
 	/* Define logger level for world model */
 	brics_3d::Logger::setMinLoglevel(brics_3d::Logger::LOGDEBUG);
-	brics_3d::Logger::setLogfile("world_model_tf_bridge.log");
+	brics_3d::Logger::setLogfile("world_model_knowrob_bridge.log");
 
 	/* Create an empty world model */
 	brics_3d::WorldModel* wm = new brics_3d::WorldModel();
@@ -101,11 +104,17 @@ int main(int argc, char **argv)
 	rootNodeAttributes.push_back(Attribute("name", "rsg_kb_bridge")); // the name tag is for debugging
 	wm->scene.setNodeAttributes(wm->getRootNodeId(), rootNodeAttributes);
 
+	/* Enable to cache data in the bridge itself */
+	if(enableCache) {
+		RemoteRootNodeAutoMounter wmAutoMounter(&wm->scene, wm->getRootNodeId()); //mount everything relative to root node
+		wm->scene.attachUpdateObserver(&wmAutoMounter);
+	}
+
 	/* Attach additional debug output to the world model e.g.
 	 * rosparam set /enable_dot_visualizer true
 	 */
 	brics_3d::rsg::DotVisualizer structureVisualizer(&wm->scene);
-	structureVisualizer.setKeepHistory(false);
+	structureVisualizer.setKeepHistory(true);
 	structureVisualizer.setFileName("knowrob_bridge");
 	structureVisualizer.setGenerateSvgFiles(true);
 	if (enableDotVisualizer) {
