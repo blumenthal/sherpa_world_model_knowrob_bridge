@@ -10,11 +10,14 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="645.62317"
-   height="156.67297"
+   height="255.51494"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="rsg_knowrob_bridge_overview.png">
+   sodipodi:docname="rsg_knowrob_bridge_overview.svg"
+   inkscape:export-filename="/opt/src/robotics/hydro_workspace/src/sherpa_world_model_knowrob_bridge/doc/rsg_knowrob_bridge_overview.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <defs
      id="defs4">
     <marker
@@ -87,6 +90,48 @@
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3841-1-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3841-1-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9-7-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3841-1-6-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -95,9 +140,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2701172"
-     inkscape:cx="341.99793"
-     inkscape:cy="-6.6953591"
+     inkscape:zoom="1.6295757"
+     inkscape:cx="326.16909"
+     inkscape:cy="62.435745"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -126,7 +171,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-58.099548,-345.85172)">
+     transform="translate(-58.099548,-247.00975)">
     <rect
        style="fill:#ff6600;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985"
@@ -182,7 +227,7 @@
            height="115.2422"
            x="87.962646"
            y="319.15454" /></flowRegion><flowPara
-         id="flowPara3801"></flowPara></flowRoot>    <rect
+         id="flowPara3801" /></flowRoot>    <rect
        style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:1.83036554;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3803"
        width="136.37753"
@@ -260,9 +305,9 @@
          sodipodi:role="line"
          id="tspan4704"
          x="207.72813"
-         y="412.21857">Perception <tspan
-   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
-   id="tspan5331">Events</tspan></tspan></text>
+         y="412.21857"><tspan
+           style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+           id="tspan5331">Sherpa Events</tspan></tspan></text>
     <path
        style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9)"
        d="m 366.10795,479.18673 0,-60.62433"
@@ -278,7 +323,9 @@
          sodipodi:role="line"
          id="tspan5274"
          x="305.48361"
-         y="500.44461">Perception Event Messages</tspan></text>
+         y="500.44461"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3086">Sherpa Event</tspan> Messages</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        d="m 443.62817,400.87917 111.80071,0"
@@ -286,18 +333,98 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="449.84174"
+       style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="495.52875"
        y="418.48865"
        id="text4702-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4704-2"
-         x="449.84174"
+         x="497.12054"
          y="418.48865">Add geolocalized </tspan><tspan
          sodipodi:role="line"
-         x="449.84174"
+         x="495.52875"
          y="430.98865"
-         id="tspan5321">Perception Events</tspan></text>
+         id="tspan5321">nodes for <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3084">Sherpa Events</tspan></tspan></text>
+    <path
+       style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9)"
+       d="m 115.48506,418.49335 0,60.62433"
+       id="path4706-4"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="104.05503"
+       y="500.29337"
+       id="text5272-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5274-7"
+         x="104.05503"
+         y="500.29337">HMI</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3088"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(58.099548,345.85172)"><flowRegion
+         id="flowRegion3090"><rect
+           id="rect3092"
+           width="75.936134"
+           height="96.330414"
+           x="23.865643"
+           y="71.624504" /></flowRegion><flowPara
+         id="flowPara3094"></flowPara></flowRoot>    <path
+       style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend-9)"
+       d="m 633.84444,418.92093 0,60.62433"
+       id="path4706-4-3"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="614.41443"
+       y="500.72095"
+       id="text5272-5-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5274-7-3"
+         x="614.41443"
+         y="500.72095">Mediator</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9-7)"
+       d="M 52.160816,-8.4006661 C 54.017266,-26.796821 60.332868,-29.884045 67.502232,-37.856186 102.5645,-64.449292 214.81682,-84.289882 305.60101,-81.425808 c 110.43612,0.185919 211.7491,3.022146 268.78161,40.50134 14.30839,14.573617 14.81936,27.756307 15.34142,33.7511148"
+       id="path5128"
+       inkscape:connector-curvature="0"
+       transform="translate(58.099548,345.85172)"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="322.58557"
+       y="254.60741"
+       id="text5712"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5714"
+         x="322.58557"
+         y="254.60741">JSON RSG Queries</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.90092885px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
+       d="m 124.39812,336.31028 c 1.73954,-15.93519 7.65741,-18.60941 14.37528,-25.51507 32.8542,-23.03558 138.03737,-40.22197 223.10438,-37.74104 103.48135,0.16105 198.41409,2.61785 251.85495,35.08323 13.40731,12.624 13.8861,24.04316 14.37529,29.23601"
+       id="path5128-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="324.37729"
+       y="287.63345"
+       id="text5712-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5714-0"
+         x="324.37729"
+         y="287.63345">JSON RSG Replies</tspan></text>
   </g>
 </svg>
