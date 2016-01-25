@@ -13,7 +13,7 @@
    height="255.51494"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="rsg_knowrob_bridge_overview.svg"
    inkscape:export-filename="/opt/src/robotics/hydro_workspace/src/sherpa_world_model_knowrob_bridge/doc/rsg_knowrob_bridge_overview.png"
    inkscape:export-xdpi="100"
@@ -132,6 +132,34 @@
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-1"
+       style="overflow:visible">
+      <path
+         id="path3838-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9-19"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3841-1-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -146,10 +174,10 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1855"
-     inkscape:window-height="1056"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
+     inkscape:window-width="1920"
+     inkscape:window-height="1145"
+     inkscape:window-x="1918"
+     inkscape:window-y="-3"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -163,7 +191,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -308,11 +336,6 @@
          y="412.21857"><tspan
            style="font-weight:bold;-inkscape-font-specification:Sans Bold"
            id="tspan5331">Sherpa Events</tspan></tspan></text>
-    <path
-       style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9)"
-       d="m 366.10795,479.18673 0,-60.62433"
-       id="path4706"
-       inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -348,10 +371,17 @@
          id="tspan5321">nodes for <tspan
    style="font-weight:bold;-inkscape-font-specification:Sans Bold"
    id="tspan3084">Sherpa Events</tspan></tspan></text>
+    <rect
+       id="rect3209"
+       width="640.65753"
+       height="13.500448"
+       x="59.940517"
+       y="446.68192"
+       style="fill:#ffcc00" />
     <path
        style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9)"
-       d="m 115.48506,418.49335 0,60.62433"
-       id="path4706-4"
+       d="m 366.10795,479.18673 0,-60.62433"
+       id="path4706"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
@@ -375,7 +405,7 @@
            height="96.330414"
            x="23.865643"
            y="71.624504" /></flowRegion><flowPara
-         id="flowPara3094"></flowPara></flowRoot>    <path
+         id="flowPara3094" /></flowRoot>    <path
        style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend-9)"
        d="m 633.84444,418.92093 0,60.62433"
        id="path4706-4-3"
@@ -390,7 +420,7 @@
          sodipodi:role="line"
          id="tspan5274-7-3"
          x="614.41443"
-         y="500.72095">Mediator</tspan></text>
+         y="500.72095">OSM JSON</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend-9-7)"
        d="M 52.160816,-8.4006661 C 54.017266,-26.796821 60.332868,-29.884045 67.502232,-37.856186 102.5645,-64.449292 214.81682,-84.289882 305.60101,-81.425808 c 110.43612,0.185919 211.7491,3.022146 268.78161,40.50134 14.30839,14.573617 14.81936,27.756307 15.34142,33.7511148"
@@ -426,5 +456,45 @@
          id="tspan5714-0"
          x="324.37729"
          y="287.63345">JSON RSG Replies</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1.2273133,199.67218 642.4985367,0"
+       id="path3185"
+       inkscape:connector-curvature="0"
+       transform="translate(58.099548,247.00975)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 59.02003,460.79603 642.49854,0"
+       id="path3185-6"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="467.40854"
+       y="458.95505"
+       id="text3205"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3207"
+         x="467.40854"
+         y="458.95505"
+         style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold">Mediator</tspan></text>
+    <path
+       style="opacity:0.98999999;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend-9)"
+       d="m 113.32865,417.59708 0,60.62433"
+       id="path4706-4-3-0"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="244.74951"
+       y="459.26505"
+       id="text3205-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3207-3"
+         x="244.74951"
+         y="459.26505"
+         style="font-size:14px;font-weight:bold;-inkscape-font-specification:Sans Bold">Mediator</tspan></text>
   </g>
 </svg>
