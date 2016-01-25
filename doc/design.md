@@ -19,7 +19,7 @@ This is e.g. the case when a new object is created, a pose has been updated or a
 In turn an according update, encoded as JSON message, is broadcasted via a ROS message to the bridge. The bridges utilizes
 an [Observer](../src//RsgToKnowrobObserver.cpp) Software Pattern to trigger the creation of a new assertion for Prolog as used by Knowrob. 
 The [JSON Prolog](https://github.com/knowrob/knowrob/tree/master/json_prolog) interface transmits the assertions. 
-An extension of the ontology for RSG specific enteies for the nosebleed comprises TODO. 
+An extension of the ontology for RSG specific enteies for the knowledgebase comprises TODO. 
 The related Prolog and OWL files can be found in the [knowrob_rsg](https://github.com/bbrieber/knowrob_rsg) 
 repository.
 The primary use case is the **creation** of the semantic map at start up. In particular it is populated with data originating
