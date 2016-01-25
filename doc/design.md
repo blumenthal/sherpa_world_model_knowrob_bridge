@@ -39,10 +39,10 @@ testability. Knowrob can be tested without the SWM and vice versa.
 
 ### Queries from Knowrob to SWM
 
-In order to obtain the latest information from the SWM, Knowrob can issues queries. It uses 
+In order to obtain information from the SWM, Knowrob can issues queries. These queries are send on demand and are used to gain access to information that has not been explicitly modeled in knowrob. It uses 
 the [JSON RSG Query API]((https://github.com/blumenthal/ubx_robotscenegraph/examples/json_api). 
 A typical querie requests pose infomation of an object at a give point in time. Here the SWM serves as an episodic 
-memory to imrove the reasoning capabilities of Knowrob.
+memory to improve the reasoning capabilities of Knowrob.
 The technical realization uses the Java to Prolog capabilities in Knowrob to issua a **JSON Query** via a ZMQ communication channel to the SWM.
 An according response immediatly follows by returning a **JSON RSG Reply** . Note, that only queries can be posed on objects
 that have been added as assertion by the bridge beforehands. 
