@@ -18,15 +18,15 @@ The RSG Updates are send from the SWM to the bridges whenever the world model is
 This is e.g. the case when a new object is created, a pose has been updated or an attribute has been altered. 
 In turn an according update, encoded as JSON message, is broadcasted via a ROS message to the bridge. The bridges utilizes
 an [Observer](../src//RsgToKnowrobObserver.cpp) Software Pattern to trigger the creation of a new assertion for Prolog as used by Knowrob. 
-The [JSON Prolog](https://github.com/knowrob/TODO) interface transmits the assertions. 
+The [JSON Prolog](https://github.com/knowrob/knowrob/tree/master/json_prolog) interface transmits the assertions. 
 An extention of the onthology for RSG scpecific entetied for the knoledbase comprises TODO.
 The related Prolog and OWL files can be found in the [knowrob_rsg](https://github.com/bbrieber/knowrob_rsg) 
 repository.
 The primary use case is the **creation** of the semantic map at start up. In particular it is populated with data originating
-from Open Street Map (OSM) which is loded by the SWM by the [``osmloder``](https://github.com/blumenthal/brics_3d_function_blocks/osmloader) 
+from Open Street Map (OSM) which is loded by the SWM by the [``osmloder``](https://github.com/blumenthal/brics_3d_function_blocks/tree/master/osmloader) 
 module. 
 
-The second responsibility of the bridge is to handle incoming [**Sherpa Events**](https://github.com/blumenthal/sherpa_world_model_knowrob_bridge_msgs/msg/SherpaEvent.msg).
+The second responsibility of the bridge is to handle incoming [**Sherpa Events**](https://github.com/blumenthal/sherpa_world_model_knowrob_bridge_msgs/blob/master/msg/SherpaEvent.msg).
  I.e. the detection of a human, the insertion of a geo-localized image as requested by a "perception on demand" task, or a task/TST related event.
 The effect of such an event is always the same: a new object for the RSG and a new assertion for Knowrob is created with:
 * the geopose **where** the event has happened,
@@ -40,7 +40,7 @@ testability. Knowrob can be tested without the SWM and vice versa.
 ### Queries from Knowrob to SWM
 
 In order to obtain information from the SWM, Knowrob can issues queries. These queries are send on demand and are used to gain access to information that has not been explicitly modeled in knowrob. It uses 
-the [JSON RSG Query API]((https://github.com/blumenthal/ubx_robotscenegraph/examples/json_api). 
+the [JSON RSG Query API](https://github.com/blumenthal/ubx_robotscenegraph/tree/master/examples/json_api). 
 A typical querie requests pose infomation of an object at a give point in time. Here the SWM serves as an episodic 
 memory to improve the reasoning capabilities of Knowrob.
 The technical realization uses the Java to Prolog capabilities in Knowrob to issua a **JSON Query** via a ZMQ communication channel to the SWM.
@@ -49,22 +49,24 @@ that have been added as assertion by the bridge beforehands.
 
 ### External queries
 
-The knowrob bridge also allows querieng the database from external applications/agents. This queries are forward as json encoded strings through the mediator. This is realized by mapping the JSON-Prolog communication mechanisms to client/server nodes that are used to forward the corresponding Service calls. 
+The knowrob bridge also allows querieng the database from external applications/agents. These queries are forward as JSON encoded strings through the mediator. This is realized by mapping the JSON-Prolog communication mechanisms to client/server nodes that are used to forward the corresponding service calls. 
 
 ## Launching the system
 
-### SWM
+### Sherpa World Model
 ```
   cd <path_to_ubx_robotscenegraph>
   ./run_sherpa_world_model.sh
   start_all()
 ```
 
-### Knowrob bridge
+### Knowrob with bridge
 ```
   roslaunch sherpa_world_model_knowrob_bridge sherpa_world_model_knowrob_bridge.launch 
 ```
 
+
+---
 
 ## Modules
 
@@ -90,6 +92,7 @@ The knowrob bridge also allows querieng the database from external applications/
   * [ ] Add semantic map updates within observer 
   * [ ] Add filter
   * [ ] Add handling of Perception Event Messages
+  * [x] Add code book for semantic tags
 
 ### SHERPA World model
 
