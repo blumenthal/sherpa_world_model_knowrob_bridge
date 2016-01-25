@@ -47,6 +47,10 @@ The technical realization uses the Java to Prolog capabilities in Knowrob to iss
 An according response immediatly follows by returning a **JSON RSG Reply** . Note, that only queries can be posed on objects
 that have been added as assertion by the bridge beforehands. 
 
+### External queries
+
+The knowrob bridge also allows querieng the database from external applications/agents. This queries are forward as json encoded strings through the mediator. This is realized by mapping the JSON-Prolog communication mechanisms to client/server nodes that are used to forward the corresponding Service calls. 
+
 ## Launching the system
 
 ### SWM
