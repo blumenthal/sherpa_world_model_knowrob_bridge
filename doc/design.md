@@ -35,7 +35,7 @@ Please note, the mediator provides the events to Knowrob and SWN at the same tim
 
 (c) The knowrob mediator also allows querying the database from external software components/agents. This allows the same interface for components independent of a local Knowrob component being present. Components can send Knowrob queries as JSON encoded messages to the mediator. The mediator knows if a local Knowrob component is present or not. If one is present, it will send the query there. Otherwise, it will forward the query to the communication mediator, which will send it to all other Sherpa animals. The animals with a Knowrob component will then resolve the query and send the result back. Only the first returned result will be taken into account. The later ones will be ignored and termination signals for these query interfaces are sent.
 
-![Architecture](sherpa_arhitecture.png)
+![Architecture](sherpa_architecture.png)
 
 
 ### Queries from Knowrob to SWM
