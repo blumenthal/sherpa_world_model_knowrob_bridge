@@ -31,6 +31,7 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
 | ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. |
 | ``sherpa:origin`` | ``initial`` | tbd | tbd | Start frame for a robot. Typically used for local odometry |
+| ``sherpa:artva_signal`` | ``0``-``100`` | ``Node`` | tbd | A single *ARTVA* measurement, stored as Node. Its geoposes is represented as a Transform. Cf. below. |
 | ``gis:origin`` | ``utm`` or ``wgs84`` | ``Node`` | tbd | Identifies the reference frame for geoses. |
 | ``tf:type`` | ``tf``, ``utm`` or ``wgs84`` | ``Transform`` | tbd | Identifies if the Transform as Cartesian pose in case of ``tf`` or as a geopose according to the UTM or WGS84 format. |
 | ``tf:utm_zone`` | eg. ``39N`` | tbd | tbd | Specifies UTM zone if ``tf:type`` is set to ``utm``. |
