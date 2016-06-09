@@ -98,10 +98,10 @@ ENDIF(USE_JSON)
 
 
 IF(USE_OSG)
-    #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
     ADD_DEFINITIONS(-DENABLE_OSG)
 ENDIF(USE_OSG)  
 
+# FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
 # add include directories (-I)
 INCLUDE_DIRECTORIES(${BRICS_3D_INCLUDE_DIRS}
         ${EIGEN_INCLUDE_DIRS}

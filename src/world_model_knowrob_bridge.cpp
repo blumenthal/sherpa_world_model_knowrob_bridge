@@ -1,8 +1,8 @@
 /******************************************************************************
 * BRICS_3D - 3D Perception and Modeling Library
-* Copyright (c) 2014, KU Leuven
+* Copyright (c) 2016, uni-Bremen
 *
-* Author: Sebastian Blumenthal
+* Author: Benjamin Brieber
 *
 *
 * This software is published under a dual-license: GNU Lesser General Public
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
 	node.param("enable_cache", enableCache, true); // Enables in-memory cache for bridge; allows for local lookups of initial transforms
 
 	/* Define logger level for world model */
-	brics_3d::Logger::setMinLoglevel(brics_3d::Logger::LOGDEBUG);
+	brics_3d::Logger::setMinLoglevel(brics_3d::Logger::LOGERROR);
 	brics_3d::Logger::setLogfile("world_model_knowrob_bridge.log");
 
 	/* Create an empty world model */

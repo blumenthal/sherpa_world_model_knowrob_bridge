@@ -34,12 +34,14 @@
 
 #include "KnowrobConnection.h"
 
+#include "map"
+
 namespace brics_3d {
 namespace rsg {
 
 class RsgToKnowrobObserver : public ISceneGraphUpdateObserver {
 public:
-	RsgToKnowrobObserver(WorldModel* wm);
+RsgToKnowrobObserver(WorldModel* wm);
 	virtual ~RsgToKnowrobObserver();
 
 	
@@ -48,21 +50,27 @@ public:
 	bool addNode(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
 	bool addGroup(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
 	bool addTransformNode(Id parentId, Id& assignedId, vector<Attribute> attributes, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, TimeStamp timeStamp, bool forcedId = false);
-    bool addUncertainTransformNode(Id parentId, Id& assignedId, vector<Attribute> attributes, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, ITransformUncertainty::ITransformUncertaintyPtr uncertainty, TimeStamp timeStamp, bool forcedId = false);
+	bool addUncertainTransformNode(Id parentId, Id& assignedId, vector<Attribute> attributes, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, ITransformUncertainty::ITransformUncertaintyPtr uncertainty, TimeStamp timeStamp, bool forcedId = false);
 	bool addGeometricNode(Id parentId, Id& assignedId, vector<Attribute> attributes, Shape::ShapePtr shape, TimeStamp timeStamp, bool forcedId = false);
 	bool addRemoteRootNode(Id rootId, vector<Attribute> attributes);
 	bool addConnection(Id parentId, Id& assignedId, vector<Attribute> attributes, vector<Id> sourceIds, vector<Id> targetIds, TimeStamp start, TimeStamp end, bool forcedId = false);
 	bool setNodeAttributes(Id id, vector<Attribute> newAttributes, TimeStamp timeStamp = TimeStamp(0));
 	bool setTransform(Id id, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, TimeStamp timeStamp);
-    bool setUncertainTransform(Id id, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, ITransformUncertainty::ITransformUncertaintyPtr uncertainty, TimeStamp timeStamp);
+	bool setUncertainTransform(Id id, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, ITransformUncertainty::ITransformUncertaintyPtr uncertainty, TimeStamp timeStamp);
 	bool deleteNode(Id id);
 	bool addParent(Id id, Id parentId);
-    bool removeParent(Id id, Id parentId);
+	bool removeParent(Id id, Id parentId);
+    
+private:
+	double getHeightAt(double long, double lat);
 
 
 private:
 	KnowrobConnection* kb_con;
 	WorldModel* wm;
+    map<Id, RSG_Node> attrNodes;
+    map<Id, RSG_GeoPoint> poseNodes;
+    //map<Id, > ;
 
 };
 
