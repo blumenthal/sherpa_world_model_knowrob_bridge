@@ -23,6 +23,8 @@
 
 /* ROS includes */
 #include <ros/ros.h>
+
+
 //#include <tf/tf.h>
 //#include <tf/transform_listener.h> //@deprecated
 //#include <tf/transform_broadcaster.h> //@deprecated
@@ -54,6 +56,7 @@
 
 /* RSG <-> Knowrob bindings */
 #include "RsgToKnowrobObserver.h"
+#include "RsgCommandObserver.h"
 #include "KnowrobConnection.h"
 
 #include <vector>
@@ -163,7 +166,16 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = node.subscribe(SHERPA_EVENT_TOPIC_NAME, 1000, onSherpaEvent);
 	//kb_con.call_nothin();
 //#endif
-	LOG(INFO) << "Ready.";
+    
+    
+    
+//#ifdef ENABLE_COMMAND_OBSERVER
+    RsgCommandObserver rsgCmdObs(wm);
+    frequencyFilter->attachUpdateObserver(&rsgCmdObs);
+    
+    
+//#endif //ENABLE_COMMAND_OBSERVER
+    LOG(INFO) << "Ready.";
 
 	/* Let the node loop and process messages. */
 	ros::MultiThreadedSpinner spinner(2);

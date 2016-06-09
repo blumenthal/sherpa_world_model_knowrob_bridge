@@ -6,3 +6,4 @@ msg_gen
 .cproject
 .settings
 *.log
+*.kdev4

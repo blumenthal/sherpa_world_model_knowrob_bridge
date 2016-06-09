@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   tf2
   tf2_msgs 
+  std_msgs 
   tf2_bullet 
   tf2_ros
   tf2_kdl 
@@ -203,6 +204,7 @@ add_executable(sherpa_world_model_knowrob_bridge
     src/world_model_knowrob_bridge.cpp 
     src/RsgRosBridge.cpp
     src/RsgToKnowrobObserver.cpp
+    src/RsgCommandObserver.cpp
     src/KnowrobConnection.cpp
 )
 add_dependencies(sherpa_world_model_knowrob_bridge sherpa_world_model_knowrob_bridge_msgs_generate_messages_cpp)

@@ -204,6 +204,9 @@ bool RsgToKnowrobObserver::setNodeAttributes(Id id,
 	 * Pecepetion event w.r.t to a changed attribute
 	 * goes here...
 	 */
+    
+    // NOTE Command forward?
+    // NOTE 
 
 	return true;
 }
