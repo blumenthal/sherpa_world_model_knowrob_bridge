@@ -30,7 +30,7 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``osm:node_id`` | any Integer | ``Node`` | yes | Id used to identtify a OSM *node*. Added to common tags within OSM |
 | ``osm:way_id`` | any Integer | ``Connection`` | yes | Id used to idententify a OSM *way*. Added to common tags within OSM  |
 | ``geo:area`` | ``polygon`` | ``Connection`` | yes | The set of Nodes must be indicated as targetIds. The first and the last Node ID must be the same. |
-| ``sherpa:agent_name`` | any String | ``Node`` | yes | Human readable name for a SHARPA robot. E.g. ``donkey`` |
+| ``sherpa:agent_name`` | any String | ``Group`` | yes | Human readable name for a SHARPA robot. E.g. ``donkey`` |
 | ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud``, ``video``, ``artva`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
 | ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. |
 | ``sherpa:origin`` | ``initial`` | ``Node`` | yes | Start frame for a robot. Typically used for local odometry |
@@ -41,6 +41,9 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``tst:envtst`` | A TST model wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies a complete TST that is valid for a mission. |
 | ``tst:ennodeupdate`` | A TST update wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies an update for TST node. |
 | ``kb:iri`` | IRI for knowrob classes and instances   | ``Node,Connection,Group`` | yes | Reference to corresponding knowrob instance |
+| ``kb:node_id`` | any Integer | ``Node`` | yes | Id used to identtify a OSM like *node* inserted by knowrob. The node can contain additional OSM data  |
+| ``kb:way_id`` |any Integer | ``Connection`` | yes | Id used to idententify a OSM like *way* inserted by knowrob. The node can contain additional OSM data  |
+| ``kb:map_id`` |any Integer | ``Group`` | yes | Id used to idententify a OSM like virtual *maps* inserted by knowrob. The node might be deleted if it is not needed anymore  |
 
 
 
