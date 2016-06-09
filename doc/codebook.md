@@ -13,6 +13,8 @@ Currently there are the following contexts:
  * ``sherpa`` for application specific data like detected humans
  * ``rsg``	for Robot Scene Graph related tags
  * ``tst``	for Task Specifiacation Trees (TST) as used by the LKU delegation framework
+ * ``kb``	for Knowrob related tags
+ * ``geo``	for geometry
 
 In general scene related tags should comply with the tags for [Open Street Map](http://wiki.openstreetmap.org/wiki/Map_Features) data plus the added prefix ``osm:``.
 E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed in the below table.  
@@ -25,18 +27,20 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``osm:natural`` | ``wood`` | tbd | tbd | Example for a [wood](http://wiki.openstreetmap.org/wiki/Tag:natural%3Dwood) tag from OSM. |
 | ``osm:natural`` | ``peak`` | tbd | tbd | Example for the [peak](http://wiki.openstreetmap.org/wiki/Tag:natural%3Dpeak) of a mountain tag from OSM. |
 | ``osm:building`` | ``house`` | tbd | tbd | Example for a [house](http://wiki.openstreetmap.org/wiki/Tag:building%3Dhouse) tag from OSM. |
-| ``osm:node_id`` | any Integer | ``Node`` | tbd | Id used to identtify a OSM *node*. Added to common tags within OSM |
-| ``osm:node_way`` | any Integer | ``Connection`` | tbd | Id used to idententify a OSM *way*. Added to common tags within OSM  |
+| ``osm:node_id`` | any Integer | ``Node`` | yes | Id used to identtify a OSM *node*. Added to common tags within OSM |
+| ``osm:way_id`` | any Integer | ``Connection`` | yes | Id used to idententify a OSM *way*. Added to common tags within OSM  |
+| ``geo:area`` | ``polygon`` | ``Connection`` | yes | The set of Nodes must be indicated as targetIds. The first and the last Node ID must be the same. |
 | ``sherpa:agent_name`` | any String | ``Node`` | yes | Human readable name for a SHARPA robot. E.g. ``donkey`` |
-| ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
+| ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud``, ``video``, ``artva`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
 | ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. |
-| ``sherpa:origin`` | ``initial`` | tbd | tbd | Start frame for a robot. Typically used for local odometry |
+| ``sherpa:origin`` | ``initial`` | ``Node`` | yes | Start frame for a robot. Typically used for local odometry |
 | ``sherpa:artva_signal`` | ``0``-``100`` | ``Node`` | tbd | A single *ARTVA* measurement, stored as Node. Its geoposes is represented as a Transform. Cf. below. |
-| ``gis:origin`` | ``utm`` or ``wgs84`` | ``Node`` | tbd | Identifies the reference frame for geoses. |
+| ``gis:origin`` | ``utm`` or ``wgs84`` | ``Node`` | yes | Identifies the reference frame for geoses. |
 | ``tf:type`` | ``tf``, ``utm`` or ``wgs84`` | ``Transform`` | tbd | Identifies if the Transform as Cartesian pose in case of ``tf`` or as a geopose according to the UTM or WGS84 format. |
 | ``tf:utm_zone`` | eg. ``39N`` | tbd | tbd | Specifies UTM zone if ``tf:type`` is set to ``utm``. |
 | ``tst:envtst`` | A TST model wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies a complete TST that is valid for a mission. |
 | ``tst:ennodeupdate`` | A TST update wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies an update for TST node. |
+| ``kb:iri`` | IRI for knowrob classes and instances   | ``Node,Connection,Group`` | yes | Reference to corresponding knowrob instance |
 
 
 
