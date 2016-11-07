@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   tf2
   tf2_msgs 
+  std_msgs 
   tf2_bullet 
   tf2_ros
   tf2_kdl 
@@ -98,10 +99,10 @@ ENDIF(USE_JSON)
 
 
 IF(USE_OSG)
-    #FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
     ADD_DEFINITIONS(-DENABLE_OSG)
 ENDIF(USE_OSG)  
 
+# FIND_PACKAGE(OpenSceneGraph COMPONENTS osgGA osgUtil osgViewer osgUtil osgText)
 # add include directories (-I)
 INCLUDE_DIRECTORIES(${BRICS_3D_INCLUDE_DIRS}
         ${EIGEN_INCLUDE_DIRS}
@@ -203,6 +204,7 @@ add_executable(sherpa_world_model_knowrob_bridge
     src/world_model_knowrob_bridge.cpp 
     src/RsgRosBridge.cpp
     src/RsgToKnowrobObserver.cpp
+    src/RsgCommandObserver.cpp
     src/KnowrobConnection.cpp
 )
 add_dependencies(sherpa_world_model_knowrob_bridge sherpa_world_model_knowrob_bridge_msgs_generate_messages_cpp)

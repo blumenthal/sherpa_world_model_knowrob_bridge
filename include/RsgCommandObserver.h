@@ -1,8 +1,8 @@
 /******************************************************************************
  * BRICS_3D - 3D Perception and Modeling Library
  * Copyright (c) 2015, KU Leuven
- *
- * Author: Sebastian Blumenthal
+ * FIXME based on....
+ * Author: Benjamin Brieber
  *
  *
  * This software is published under a dual-license: GNU Lesser General Public
@@ -17,8 +17,8 @@
  *
  ******************************************************************************/
 
-#ifndef RSG_RsgToKnowrobObserver_H_
-#define RSG_RsgToKnowrobObserver_H_
+#ifndef __RSG_COMMAND_OBSERVER_H__
+#define __RSG_COMMAND_OBSERVER_H__
 
 /* RSG related headers */
 #include <brics_3d/worldModel/sceneGraph/ISceneGraphUpdateObserver.h>
@@ -28,25 +28,20 @@
 /* ROS TF related headers */
 #include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
+#include "std_msgs/Empty.h"
 
 #include "SceneGraphTypeCasts.h"
 
 
-#include "KnowrobConnection.h"
-
-#include "map"
-
 namespace brics_3d {
 namespace rsg {
 
-class RsgToKnowrobObserver : public ISceneGraphUpdateObserver {
+class RsgCommandObserver : public ISceneGraphUpdateObserver {
 public:
-RsgToKnowrobObserver(WorldModel* wm);
-	virtual ~RsgToKnowrobObserver();
+RsgCommandObserver(WorldModel* wm);
+	virtual ~RsgCommandObserver();
 
 	
-	void setKnowrobConnection(KnowrobConnection* kb);
-	/* implemetntations of observer interface */
 	bool addNode(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
 	bool addGroup(Id parentId, Id& assignedId, vector<Attribute> attributes, bool forcedId = false);
 	bool addTransformNode(Id parentId, Id& assignedId, vector<Attribute> attributes, IHomogeneousMatrix44::IHomogeneousMatrix44Ptr transform, TimeStamp timeStamp, bool forcedId = false);
@@ -62,21 +57,19 @@ RsgToKnowrobObserver(WorldModel* wm);
 	bool removeParent(Id id, Id parentId);
     
 private:
-	double getHeightAt(double long, double lat);
-
-
-private:
-	KnowrobConnection* kb_con;
-	WorldModel* wm;
-    map<Id, RSG_Node> attrNodes;
-    map<Id, RSG_GeoPoint> poseNodes;
-    //map<Id, > ;
+    
+    WorldModel* wm;
+    
+    ros::Publisher commandPub;
+    ros::Publisher interpretedCommandPub;
+    
+    std_msgs::Empty msg;
 
 };
 
 } /* namespace rsg */
 } /* namespace brics_3d */
 
-#endif /* RSG_RsgToKnowrobObserver_H_ */
+#endif /* __RSG_COMMAND_OBSERVER_H__ */
 
 /* EOF */

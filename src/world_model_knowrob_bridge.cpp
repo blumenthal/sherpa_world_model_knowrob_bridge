@@ -1,8 +1,8 @@
 /******************************************************************************
 * BRICS_3D - 3D Perception and Modeling Library
-* Copyright (c) 2014, KU Leuven
+* Copyright (c) 2016, uni-Bremen
 *
-* Author: Sebastian Blumenthal
+* Author: Benjamin Brieber
 *
 *
 * This software is published under a dual-license: GNU Lesser General Public
@@ -23,6 +23,8 @@
 
 /* ROS includes */
 #include <ros/ros.h>
+
+
 //#include <tf/tf.h>
 //#include <tf/transform_listener.h> //@deprecated
 //#include <tf/transform_broadcaster.h> //@deprecated
@@ -54,6 +56,7 @@
 
 /* RSG <-> Knowrob bindings */
 #include "RsgToKnowrobObserver.h"
+#include "RsgCommandObserver.h"
 #include "KnowrobConnection.h"
 
 #include <vector>
@@ -94,7 +97,7 @@ int main(int argc, char **argv)
 	node.param("enable_cache", enableCache, true); // Enables in-memory cache for bridge; allows for local lookups of initial transforms
 
 	/* Define logger level for world model */
-	brics_3d::Logger::setMinLoglevel(brics_3d::Logger::LOGDEBUG);
+	brics_3d::Logger::setMinLoglevel(brics_3d::Logger::LOGERROR);
 	brics_3d::Logger::setLogfile("world_model_knowrob_bridge.log");
 
 	/* Create an empty world model */
@@ -163,7 +166,16 @@ int main(int argc, char **argv)
 	ros::Subscriber sub = node.subscribe(SHERPA_EVENT_TOPIC_NAME, 1000, onSherpaEvent);
 	//kb_con.call_nothin();
 //#endif
-	LOG(INFO) << "Ready.";
+    
+    
+    
+//#ifdef ENABLE_COMMAND_OBSERVER
+    RsgCommandObserver rsgCmdObs(wm);
+    frequencyFilter->attachUpdateObserver(&rsgCmdObs);
+    
+    
+//#endif //ENABLE_COMMAND_OBSERVER
+    LOG(INFO) << "Ready.";
 
 	/* Let the node loop and process messages. */
 	ros::MultiThreadedSpinner spinner(2);

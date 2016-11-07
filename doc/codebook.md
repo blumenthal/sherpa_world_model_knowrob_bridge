@@ -13,6 +13,8 @@ Currently there are the following contexts:
  * ``sherpa`` for application specific data like detected humans
  * ``rsg``	for Robot Scene Graph related tags
  * ``tst``	for Task Specifiacation Trees (TST) as used by the LKU delegation framework
+ * ``kb``	for Knowrob related tags
+ * ``geo``	for geometry
 
 In general scene related tags should comply with the tags for [Open Street Map](http://wiki.openstreetmap.org/wiki/Map_Features) data plus the added prefix ``osm:``.
 E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed in the below table.  
@@ -27,8 +29,9 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``osm:building`` | ``house`` | tbd | tbd | Example for a [house](http://wiki.openstreetmap.org/wiki/Tag:building%3Dhouse) tag from OSM. |
 | ``osm:node_id`` | any Integer | ``Node`` | tbd | Id used to identtify a OSM *node*. Added to common tags within OSM |
 | ``osm:node_way`` | any Integer | ``Connection`` | tbd | Id used to idententify a OSM *way*. Added to common tags within OSM  |
+| ``geo:area`` | ``polygon`` | ``Connection`` | yes | The set of Nodes must be indicated as targetIds. The first and the last Node ID must be the same. |
 | ``sherpa:agent_name`` | any String | ``Node`` | yes | Human readable name for a SHARPA robot. E.g. ``donkey`` |
-| ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud``, ``victim`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
+| ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud``, ``victim``, ``artva``, ``battery`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
 | ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. |
 | ``sherpa:image_height`` | positive Integer  | ``Node`` | tbd | Optional inidication on height of image. Can be use for geotiff  (DEM) files as well. |
 | ``sherpa:image_width`` | positive Integer  | ``Node`` | tbd | Optional inidication on width of image. Can be use for geotiff  (DEM) files as well. |
@@ -41,6 +44,10 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``tf:utm_zone`` | eg. ``39N`` | tbd | tbd | Specifies UTM zone if ``tf:type`` is set to ``utm``. |
 | ``tst:envtst`` | A TST model wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies a complete TST that is valid for a mission. |
 | ``tst:ennodeupdate`` | A TST update wrapped in a  "sherpa_msgs" meta model  | ``Node`` | no | Specifies an update for TST node. |
+| ``kb:iri`` | IRI for knowrob classes and instances   | ``Node,Connection,Group`` | yes | Reference to corresponding knowrob instance |
+| ``kb:node_id`` | any Integer | ``Node`` | yes | Id used to identtify a OSM like *node* inserted by knowrob. The node can contain additional OSM data  |
+| ``kb:way_id`` |any Integer | ``Connection`` | yes | Id used to idententify a OSM like *way* inserted by knowrob. The node can contain additional OSM data  |
+| ``kb:map_id`` |any Integer | ``Group`` | yes | Id used to idententify a OSM like virtual *maps* inserted by knowrob. The node might be deleted if it is not needed anymore  |
 
 
 
