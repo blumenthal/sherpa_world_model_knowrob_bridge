@@ -27,16 +27,16 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``osm:natural`` | ``wood`` | tbd | tbd | Example for a [wood](http://wiki.openstreetmap.org/wiki/Tag:natural%3Dwood) tag from OSM. |
 | ``osm:natural`` | ``peak`` | tbd | tbd | Example for the [peak](http://wiki.openstreetmap.org/wiki/Tag:natural%3Dpeak) of a mountain tag from OSM. |
 | ``osm:building`` | ``house`` | tbd | tbd | Example for a [house](http://wiki.openstreetmap.org/wiki/Tag:building%3Dhouse) tag from OSM. |
-| ``osm:node_id`` | any Integer | ``Node`` | tbd | Id used to identtify a OSM *node*. Added to common tags within OSM |
-| ``osm:node_way`` | any Integer | ``Connection`` | tbd | Id used to idententify a OSM *way*. Added to common tags within OSM  |
+| ``osm:node_id`` | any Integer | ``Node`` | yes | Id used to identtify a OSM *node*. Added to common tags within OSM |
+| ``osm:node_way`` | any Integer | ``Connection`` | yes | Id used to idententify a OSM *way*. Added to common tags within OSM  |
 | ``geo:area`` | ``polygon`` | ``Connection`` | yes | The set of Nodes must be indicated as targetIds. The first and the last Node ID must be the same. |
 | ``sherpa:agent_name`` | any String | ``Node`` | yes | Human readable name for a SHARPA robot. E.g. ``donkey`` |
 | ``sherpa:observation_type`` | Enum: ``dem``, ``image``, ``point_cloud``, ``victim``, ``artva``, ``battery`` | ``Node`` | tbd | Geo tagged perception event as requested by mission. |
-| ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. |
+| ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. Conventaion is: ``<MediatorUUID>:<path_to_file>`` |
 | ``sherpa:image_height`` | positive Integer  | ``Node`` | tbd | Optional inidication on height of image. Can be use for geotiff  (DEM) files as well. |
 | ``sherpa:image_width`` | positive Integer  | ``Node`` | tbd | Optional inidication on width of image. Can be use for geotiff  (DEM) files as well. |
 | ``sherpa:author`` | String for the author e.g. ``donkey``  | ``Node`` | tbd | Optional inidication who made the image |
-| ``sherpa:origin`` | ``initial`` | tbd | tbd | Start frame for a robot. Typically used for local odometry |
+| ``sherpa:origin`` | ``initial`` | ``Node`` | yes | Start frame for a robot. Typically used for local odometry |
 | ``sherpa:artva_signal`` | ``0``-``100`` | ``Node`` | tbd | A single *ARTVA* measurement, stored as Node. Its geoposes is represented as a Transform. Cf. below. |
 | ``sherpa:battery_voltage`` | Integer | ``Node`` | tbd | A single battery voltage measurement, stored as Node. Might be used with a single Node by just overriding the value. Its geoposes is represented as a Transform. Cf. below. |
 | ``gis:origin`` | ``utm`` or ``wgs84`` | ``Node`` | tbd | Identifies the reference frame for geoses. |
