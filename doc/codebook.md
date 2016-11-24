@@ -35,10 +35,12 @@ E.g. ``highway=path`` turns into ``osm:highway=path``. Some examples are listed 
 | ``sherpa:uri`` | String according to URI specification | ``Node`` | tbd | Unique Resource Location of image, point cloud, digital elevation map, etc. Conventaion is: ``<MediatorUUID>:<path_to_file>`` |
 | ``sherpa:image_height`` | positive Integer  | ``Node`` | tbd | Optional inidication on height of image. Can be use for geotiff  (DEM) files as well. |
 | ``sherpa:image_width`` | positive Integer  | ``Node`` | tbd | Optional inidication on width of image. Can be use for geotiff  (DEM) files as well. |
-| ``sherpa:author`` | String for the author e.g. ``donkey``  | ``Node`` | tbd | Optional inidication who made the image |
+| ``sherpa:author`` | String for the author e.g. ``donkey0``  | ``Node`` | tbd | Optional inidication who made the image |
+| ``sherpa:stamp`` | Miliseconds since epoch  | ``Node`` | tbd | Optional inidication when the image was take. |
 | ``sherpa:origin`` | ``initial`` | ``Node`` | yes | Start frame for a robot. Typically used for local odometry |
-| ``sherpa:artva_signal`` | ``0``-``100`` | ``Node`` | tbd | A single *ARTVA* measurement, stored as Node. Its geoposes is represented as a Transform. Cf. below. |
-| ``sherpa:battery_voltage`` | Integer | ``Node`` | tbd | A single battery voltage measurement, stored as Node. Might be used with a single Node by just overriding the value. Its geoposes is represented as a Transform. Cf. below. |
+| ``sherpa:artva_signal0`` ... ``sherpa:artva_signal3`` | ``0``-``100`` | ``Node`` | tbd | A single *ARTVA* measurement, stored as Node. Its geoposes is represented as a Transform. Cf. below. |
+| ``sherpa:battery_voltage`` | Real | ``Node`` | tbd | A single battery voltage measurement, stored as Node. Might be used with a single Node by just overriding the value. Should be a child of the agent. |
+| ``sherpa:battery_status`` | ``HIGH``, ``MID``, ``LOW`` | ``Node`` | tbd | A single battery status measurement, stored as Node. Might be used with a single Node by just overriding the value. Should be a child of the agent. |
 | ``gis:origin`` | ``utm`` or ``wgs84`` | ``Node`` | tbd | Identifies the reference frame for geoses. |
 | ``tf:type`` | ``tf``, ``utm`` or ``wgs84`` | ``Transform`` | tbd | Identifies if the Transform as Cartesian pose in case of ``tf`` or as a geopose according to the UTM or WGS84 format. |
 | ``tf:utm_zone`` | eg. ``39N`` | tbd | tbd | Specifies UTM zone if ``tf:type`` is set to ``utm``. |
